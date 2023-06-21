@@ -2,37 +2,18 @@
 import { RouterLink, RouterView } from 'vue-router'
 </script>
 <template>
-  <header>
-
-    <div class="navbar bg-base-100">
+  <header class="flex justify-center mt-5 mx-5">
+    <div class="w-11/12 m-auto navbar shadow fixed z-50 rounded-box bg-none border border-2 border-secondary backdrop-blur-sm text-base-100 p-0">
       <div class="flex-1">
-        <RouterLink class="btn btn-ghost normal-case text-xl" to="/">daisyUI</RouterLink>
+        <RouterLink class="btn btn-ghost font-title uppercase text-xl" to="/">Maxim<br> Fedelique</RouterLink>
       </div>
       <div class="flex-none">
-        <ul class="menu menu-horizontal px-1">
-          <li><a>Link</a></li>
-          <li>
-            <details>
-              <summary>
-                Parent
-              </summary>
-              <ul class="p-2 bg-base-100">
-                <li><a>Link 1</a></li>
-                <li><a>Link 2</a></li>
-              </ul>
-            </details>
-          </li>
+        <ul class="menu menu-horizontal p-0">
+          <li><a href="#about">A Propos</a></li>
+          <li><a href="#works">Projets</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
-    </div>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-      </nav>
     </div>
   </header>
 

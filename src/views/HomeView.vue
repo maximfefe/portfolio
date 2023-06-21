@@ -1,30 +1,10 @@
-<script setup>
-// import TheWelcome from '../components/TheWelcome.vue'
-</script>
-
 <template>
   <main class="gsap">
-    <section id="hero" data-bgcolor="#1d232a" data-textcolor='#F6D9AA'>
-      <div class="rating">
-  <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-  <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" checked />
-  <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-  <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-  <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-</div>
-    </section>
-    <section id="about" data-bgcolor="#112F3F" data-textcolor='#F6D9AA'>
-
-    </section>
-    <section id="works" data-bgcolor="#F6D9AA" data-textcolor='#112F3F'>
-
-    </section>
-    <section id="tech" data-bgcolor="#112F3F" data-textcolor='#F6D9AA'>
-
-    </section>
-    <section id="contact" data-bgcolor="#1d232a" data-textcolor='#F6D9AA'>
-
-    </section>
+    <HeroSection/>
+    <AboutSection/>
+    <WorksSection/>
+    <TechSection/>
+    <ContactSection/>
   </main>
 </template>
 
@@ -32,16 +12,27 @@
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import HeroSection from '@/components/Section/HeroSection.vue'
+import AboutSection from '@/components/Section/AboutSection.vue'
+import WorksSection from '@/components/Section/WorksSection.vue'
+import TechSection from '@/components/Section/TechSection.vue'
+import ContactSection from '@/components/Section/ContactSection.vue'
 
 export default {
-  setup() {
+  components:{
+    HeroSection,
+    AboutSection,
+    WorksSection,
+    TechSection,
+    ContactSection,
   },
   mounted () {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
     this.animation = this.animateOnScroll()
     ScrollTrigger.refresh();
   },
-  methods: { 
+  methods: {
     animateOnScroll() {
       const scrollColorElems = document.querySelectorAll("section");
       return gsap.utils.toArray("section").forEach((panel, i) => {
@@ -66,14 +57,24 @@ export default {
         });
       });
     },
-  }
+  },
 }
 </script>
 
 
 <style>
 section{
-  height: 80vh;
+  height: 110vh;
+  overflow: hidden;
 }
-  
+
+@media (min-width:768px) {
+  h1, h2{
+    -webkit-text-fill-color: transparent; /* Rendre la couleur du texte transparente */
+    -webkit-text-stroke: 2px hsl(var(--s));
+  }
+
+}
+
+
 </style>

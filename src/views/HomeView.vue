@@ -64,7 +64,7 @@ export default {
 
 <style>
 section{
-  height: 110vh;
+  min-height: 120vh;
   overflow: hidden;
 }
 
@@ -72,6 +72,9 @@ section{
   h1, h2{
     -webkit-text-fill-color: transparent; /* Rendre la couleur du texte transparente */
     -webkit-text-stroke: 2px hsl(var(--s));
+  }
+  section{
+    min-height: 110vh;
   }
 
 }

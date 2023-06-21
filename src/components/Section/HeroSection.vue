@@ -1,8 +1,8 @@
 <template>
     <section id="hero" data-bgcolor="#1a1b1c" data-textcolor='#F1F1F1'>
-      <div class="w-11/12 m-auto  content">
-        <h1 class="relative z-10  font-title uppercase text-2xl text-secondary top-10  md:text-5xl lg:top-3/4 lg:w-2/5 lg:text-7xl">Développeur web</h1>
-        <p class="relative z-10 mt-5 ml-auto text-xl top-60 lg:top-0 lg:w-2/5 lg:text-2xl">Explorez mon univers créatif et technologique à travers mon portfolio, où j'exprime ma passion pour le développement web, le design et l'innovation.</p>
+      <div class="w-11/12 m-auto content">
+        <h1 class="relative z-10  font-title uppercase text-2xl text-secondary top-0  md:text-5xl lg:top-3/4 lg:w-2/5 lg:text-7xl">Développeur web</h1>
+        <p class="relative z-10 mt-5 ml-auto text-xl top-80 lg:top-0 lg:w-2/5 lg:text-2xl">Explorez mon univers créatif et technologique à travers mon portfolio, où j'exprime ma passion pour le développement web, le design et l'innovation.</p>
       </div>
       <div class="photo-container flex gap-48 w-100">
         <!-- <div class="pixel2"></div> -->

@@ -3,7 +3,7 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 <template>
   <header class="flex justify-center mt-5 mx-5">
-    <div class="w-11/12 m-auto navbar shadow fixed z-50 rounded-box bg-none border border-2 border-secondary backdrop-blur-sm text-base-100 p-0">
+    <div class="w-11/12 m-auto navbar shadow fixed z-50 rounded-box border border-2 border-secondary backdrop-blur-sm text-base-100 p-0">
       <div class="flex-1">
         <RouterLink class="btn btn-ghost font-title uppercase text-xl" to="/">Maxim<br> Fedelique</RouterLink>
       </div>
@@ -21,5 +21,7 @@ import { RouterLink, RouterView } from 'vue-router'
 </template>
 
 <style scoped>
-
+.navbar{
+  background-color: rgba(26, 27, 28, 0.3);
+}
 </style>

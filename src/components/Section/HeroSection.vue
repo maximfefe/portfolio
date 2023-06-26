@@ -7,7 +7,7 @@
       <div class="photo-container flex gap-48 w-100">
         <!-- <div class="pixel2"></div> -->
         <img :src="photoSrc" alt="Crâne de squelette fumant une cigarette" height="400" width="650" class="photo crane max-w-full h-fit	" ref="photo" />
-        <img src="/public/images/smoke.png" alt="fumer" height="300" width="250" class="smoke" />
+        <img src="/images/smoke.png" alt="fumer" height="300" width="250" class="smoke" />
 
 
         <!-- <div v-for="(pixel, index) in pixelCoordinates" :key="index" class="pixel" :ref="`pixel-${index}`"></div> -->
@@ -34,7 +34,7 @@ export default {
   },
   data() {
     return {
-      photoSrc: "public/images/crane-vangogh.png",
+      photoSrc: "/images/crane-vangogh.png",
       pixelCoordinates: [
         { x: 82, y: -143 },
         { x: 82, y: -143 },

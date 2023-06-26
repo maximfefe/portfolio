@@ -7,5 +7,5 @@
     font-family: 'Druk Wide Bold';
     font-style: normal;
     font-weight: 700;
-    src: local('Druk Wide Bold'), url('public/font/DrukWideBold.woff') format('woff');
+    src: local('Druk Wide Bold'), url('/font/DrukWideBold.woff') format('woff');
 }

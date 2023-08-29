@@ -64,7 +64,7 @@ export default {
 
 <style>
 section{
-  min-height: 120vh;
+  min-height: 10vh;
   overflow: hidden;
 }
 

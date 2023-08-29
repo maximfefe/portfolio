@@ -1,11 +1,8 @@
-<script>
-import { RouterLink, RouterView } from 'vue-router'
-</script>
 <template>
   <header class="flex justify-center mt-5 mx-5">
     <div class="w-11/12 m-auto navbar shadow fixed z-50 rounded-box border border-2 border-secondary backdrop-blur-sm text-base-100 p-0">
       <div class="flex-1">
-        <RouterLink class="btn btn-ghost font-title uppercase text-xl" to="/">Maxim<br> Fedelique</RouterLink>
+        <RouterLink class="btn btn-ghost font-title uppercase bg-gradient-to-tl from-white via-secondary to-white bg-clip-text text-transparent" to="/">Maxim<br> Fedelique</RouterLink>
       </div>
       <div class="flex-none">
         <ul class="menu menu-horizontal p-0">
@@ -24,4 +21,7 @@ import { RouterLink, RouterView } from 'vue-router'
 .navbar{
   background-color: rgba(26, 27, 28, 0.3);
 }
+</style>
+<style lang="scss">
+// @import "@/assets/sass/sass.scss";
 </style>

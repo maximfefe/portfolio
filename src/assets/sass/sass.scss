@@ -1,0 +1,43 @@
+
+.h{
+    text-align:center;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    position:absolute;
+    left:0;
+    margin:auto;
+    top:40%;
+    transform:translateY(-50%);
+    .c{
+        border:2px solid rgba(255,255,255,.1);
+        border-radius:400px;
+        position:absolute;
+        margin:auto;
+        @for $i from 1 through 60{
+            &:nth-of-type(#{$i}){
+                box-shadow: 3px 0px rgba(255,255,255, - calc($i/40)),6px -5px rgba(10, 0, 0,  - calc($i/40));
+                width:($i * 6) + 0px;
+                height:($i * 1) + 0px;
+                left:($i * 10) + 0px;
+                bottom:($i * 10) + 100px;
+                //-webkit-filter:blur(calc($i / 3) + 8px);
+                -webkit-filter: blur(calc($i / 3) + 8px);
+                -moz-filter: blur(calc($i / 3) + 8px);
+                -o-filter: blur(calc($i / 3) + 8px);
+                -ms-filter: blur(calc($i / 3) + 8px);
+                //filter: url(#blur);
+                transform-origin: calc($i * 4) + 0px ($i * 2) + 0px;
+                animation: spin 3s calc($i/10) + 0s linear infinite;
+                $red: if($i <= 2, 120 - ($i * 5), 0 + ($i * 5));
+                $green: if($i <= 2, 120 - ($i * 5), 0 + ($i * 5));
+                background:rgba($red, $green, 20 + ($i*5), 1 - calc($i/40));
+            }
+        }
+    }
+}
+
+@keyframes spin{
+    0%{transform:rotate(0deg)}
+    100%{transform:rotate(360deg)}
+}

@@ -1,14 +1,14 @@
 <template>
     <section id="hero" data-bgcolor="#1a1b1c" data-textcolor='#F1F1F1'>
-      <div class="w-11/12 m-auto content">
+      <div class="w-11/12 m-auto content h-36">
         <h1 class="relative z-10  font-title uppercase text-2xl text-secondary top-0  md:text-5xl lg:top-3/4 lg:w-2/5 lg:text-7xl">Développeur web</h1>
         <p class="relative z-10 mt-5 ml-auto text-xl top-80 lg:top-0 lg:w-2/5 lg:text-2xl">Explorez mon univers créatif et technologique à travers mon portfolio, où j'exprime ma passion pour le développement web, le design et l'innovation.</p>
       </div>
       <div class="photo-container flex gap-48 w-100">
         <!-- <div class="pixel2"></div> -->
-        <img :src="photoSrc" alt="Crâne de squelette fumant une cigarette" height="400" width="650" class="photo crane max-w-full h-fit	" ref="photo" />
-        <img src="/images/smoke.png" alt="fumer" height="300" width="250" class="smoke" />
-
+        <img :src="photoSrc" alt="Crâne de squelette fumant une cigarette" height="400" width="900" class="photo crane max-w-full h-fit	" ref="photo" />
+        <!-- <img src="/images/smoke.png" alt="fumer" height="300" width="250" class="smoke " /> -->
+        <SmokeCrane class="smoke"/>
 
         <!-- <div v-for="(pixel, index) in pixelCoordinates" :key="index" class="pixel" :ref="`pixel-${index}`"></div> -->
       </div>
@@ -24,13 +24,15 @@ import SmokeThree from '@/components/SmokeThree.vue'
 import SmokeThree2 from '@/components/SmokeThree2.vue'
 import SmokeThree3 from '@/components/SmokeThree3.vue'
 import SmokeAnime from '@/components/SmokeAnime.vue'
+import SmokeCrane from '@/components/Animation/SmokeCrane.vue'
 
 export default {
   components:{
     SmokeAnime,
     SmokeThree,
     SmokeThree2,
-    SmokeThree3
+    SmokeThree3,
+    SmokeCrane
   },
   data() {
     return {
@@ -85,14 +87,14 @@ export default {
     // ScrollTrigger.refresh();
 
     
-    this.parallaxElement('#hero .photo-container', '.crane', 300, 0,'Back.easeIn');
-    this.parallaxElement('#hero .photo-container', '.smoke', 300, 80, 'Back.easeIn');
+    this.parallaxElement('#hero .photo-container', '.crane', -200, 0,'Back.easeInOut');
+    this.parallaxElement('#hero .photo-container', '.smoke', -200, 0, 'Back.easeInOut');
     // this.parallaxElement('#hero .photo-container', '.smoke', -650, 45, 'Sine.easeInOut');
-    this.scaleElement('.smoke', 0.8);
+    // this.scaleElement('.smoke', 0.9);
     // this.parallaxElement('#hero .photo-container', '.pixel', -450, 0,'Back.easeIn');
     // this.parallaxElement('#hero .photo-container', '.pixel2', -400, 0, 'Sine.easeIn');
     this.parallaxElement('#hero .content', 'h1', 400, 0, 'Back.easeInOut');
-    this.parallaxElement('#hero .content', 'p', -10, 0, 'Back.easeInOut');
+    this.parallaxElement('#hero .content', 'p', 100, 0, 'Back.easeInOut');
     
     // this.animatePixels();
     // ScrollTrigger.refresh();

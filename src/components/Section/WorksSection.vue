@@ -68,18 +68,19 @@ export default {
                     </div>
                     <a href="https://wilcopilot.fr">Lien du site</a>
                 `,
+
                 canvas3d :"https://prod.spline.design/UqIN7g4yFUdzgKV0/scene.splinecode"
             },
             {
-            index: 2,
-            title: 'WILCO Pilote',
-            content: `
+                index: 2,
+                title: 'WILCO Pilote',
+                content: `
                 <p>This is the content for WILCO Pilote.</p>
                 <p>You can add any text, links, images, and formatting here.</p>
                 <img src="/images/left-hand.png"" alt="Image">
-
+                
                 <a href="https://example.com">Link to Example</a>
-            `,
+                `,
             },
             // Add more objects for other cards with unique content
         ],

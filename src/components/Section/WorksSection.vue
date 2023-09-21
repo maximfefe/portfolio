@@ -58,37 +58,37 @@ export default {
     data() {
         return {
         projects: [
-            {
-                index: 1,
-                title: 'WILCO Pilote',
-                content: `
-                    <p>Ce projet est projet réalisé</p>
-                    <div class="w-64" style="height: 30rem;">
-                        <canvas id="canvas3d_modal_1" class=""></canvas>
-                    </div>
-                    <a href="https://wilcopilot.fr">Lien du site</a>
-                `,
+            // {
+            //     index: 1,
+            //     title: 'WILCO Pilote',
+            //     content: `
+            //         <p>Ce projet est projet réalisé</p>
+            //         <div class="w-64" style="height: 30rem;">
+            //             <canvas id="canvas3d_modal_1" class=""></canvas>
+            //         </div>
+            //         <a href="https://wilcopilot.fr">Lien du site</a>
+            //     `,
 
-                canvas3d :"https://prod.spline.design/UqIN7g4yFUdzgKV0/scene.splinecode"
-            },
-            {
-                index: 2,
-                title: 'WILCO Pilote',
-                content: `
-                <p>This is the content for WILCO Pilote.</p>
-                <p>You can add any text, links, images, and formatting here.</p>
-                <img src="/images/left-hand.png"" alt="Image">
+            //     canvas3d :"https://prod.spline.design/UqIN7g4yFUdzgKV0/scene.splinecode"
+            // },
+            // {
+            //     index: 2,
+            //     title: 'WILCO Pilote',
+            //     content: `
+            //     <p>This is the content for WILCO Pilote.</p>
+            //     <p>You can add any text, links, images, and formatting here.</p>
+            //     <img src="/images/left-hand.png"" alt="Image">
                 
-                <a href="https://example.com">Link to Example</a>
-                `,
-            },
+            //     <a href="https://example.com">Link to Example</a>
+            //     `,
+            // },
             // Add more objects for other cards with unique content
         ],
         };
     },
     mounted() {
         this.parallaxElement('#works', '#works .left-hand', 300, 0, 'power1.in');
-        this.parallaxElement('#works', '#works .right-hand', -300, 0, 'power1.in');
+        this.parallaxElement('#works', '#works .right-hand', -400, 0, 'power1.in');
     },
     methods: {
         parallaxElement(section, element, yPercent, rotate, ease){

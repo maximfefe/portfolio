@@ -10,6 +10,7 @@
                 <p class="">Vous avez un projet sur lequel vous aimeriez travailler avec moi ou vous souhaitez simplement discuter de certaines de mes réalisations passées ? Quel que soit votre intérêt, je suis toujours heureux de discuter et d'explorer des idées avec de nouvelles personnes. N'hésitez donc pas à me contacter.</p><br>
                 <p>maxim@fedelique.fr</p>
             </div>
+            <CardFlip/>
         </div>
         <NightBackground/>
         <!-- <WaveBackground2/> -->
@@ -18,15 +19,17 @@
 
 <script>
 import NightBackground from '@/components/Animation/NightBackground.vue'
+import CardFlip from '@/components/Contact/CardFlip.vue'
 import { gsap } from 'gsap';
 
 export default {
     components:{
         NightBackground,
+        CardFlip
     },
     mounted() {
-        this.parallaxElement('#contact', '#contact h2', 550, 0, 'power1.out');
-        this.parallaxElement('#contact', '#contact .content', 300, 0, 'power1.in');
+        this.parallaxElement('#contact', '#contact h2', 600, 0, 'power1.in');
+        this.parallaxElement('#contact', '#contact .content', 250, 0, 'power1.in');
     },
     methods:{
         parallaxElement(section, element, yPercent, rotate, ease){

@@ -15,42 +15,40 @@ export default {
     data() {
         return {
             technologies: ['Flask', 'Tailwind', 'Nuxt', 'Django', 'Bootstrap', 'Vuejs', 'Typescript', 'Laravel'],
+            // technologies: ['Flask', 'Tailwind', 'Nuxt', 'Django' ],
         };
     },
     mounted() {
         this.scrollAnimation();
-        this.parallaxElement('#tech', '#tech h2', 1000, 0, 'power1.in');
-        this.parallaxElement('#tech .content', '.side-scroll', 600, 0, 'power1.in');
+        // this.parallaxElement('#tech', '#tech h2', 1000, 0, 'power1.in');
+        // this.parallaxElement('#tech .content', '.side-scroll', 600, 0, 'power1.in');
+        this.parallaxElement('#tech', '#tech h2', 200, 0, 'power1.in');
+        this.parallaxElement('#tech .content', '.side-scroll', 300, 0, 'power1.in');
 
     },
     methods: {
         scrollAnimation() {
             const content = document.querySelector('.side-scroll');
-            const totalWidth = content.scrollWidth - content.clientWidth;
-
             content.innerHTML += content.innerHTML;
-
-            const newTotalWidth = content.scrollWidth - content.clientWidth;
-
-            gsap.set(content, { x: -totalWidth }); // Déplacez le contenu à la position finale avant l'animation
+            const totalWidth = content.scrollWidth - content.clientWidth;
+            gsap.set(content, { x: -20 }); 
 
             gsap.to(content, {
-                x: -newTotalWidth,
+                x: -totalWidth,
                 ease: 'linear',
-                duration: newTotalWidth / 200,
+                duration: totalWidth / 200,
                 repeat: -1,
             });
         },
-        parallaxElement(section, element, yPercent, rotate, ease){
+        parallaxElement(section, element, yPercent, ease){
             let sectionSelector = this.$el.querySelector(section);
             const elementSelector = this.$el.querySelector(element);
             gsap.set(elementSelector, {
-                rotation: rotate // Définissez l'angle de rotation souhaité (en degrés)
+                yPercent: 0,
             });
             
             gsap.to(elementSelector, {
                 yPercent: yPercent,
-                rotation: rotate,
                 ease: ease,
                 scrollTrigger: {
                 trigger: sectionSelector,

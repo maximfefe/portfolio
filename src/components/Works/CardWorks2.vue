@@ -1,7 +1,7 @@
 <template>
     <div class="card cursor-pointer backdrop-blur-sm w-64 items-center p-2">
         <div class="card-body p-0">
-            <h3 class="card-title justify-center">
+            <h3 class="card-title justify-center text-center">
                 {{ title }}
             </h3>
             <div class="card-actions justify-center ">

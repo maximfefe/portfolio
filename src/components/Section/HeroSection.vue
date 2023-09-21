@@ -20,64 +20,17 @@
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import SmokeThree from '@/components/SmokeThree.vue'
-import SmokeThree2 from '@/components/SmokeThree2.vue'
-import SmokeThree3 from '@/components/SmokeThree3.vue'
 import SmokeAnime from '@/components/SmokeAnime.vue'
 import SmokeCrane from '@/components/Animation/SmokeCrane.vue'
 
 export default {
   components:{
     SmokeAnime,
-    SmokeThree,
-    SmokeThree2,
-    SmokeThree3,
     SmokeCrane
   },
   data() {
     return {
       photoSrc: "/images/crane-vangogh.png",
-      pixelCoordinates: [
-        { x: 82, y: -143 },
-        { x: 82, y: -143 },
-        { x: 82, y: -143 },
-        { x: 82.5, y: -143 },
-        { x: 82.5, y: -143 },
-        { x: 82.5, y: -143 },
-        { x: 81.5, y: -143 },
-        { x: 81.5, y: -143 },
-        { x: 81.5, y: -143 },
-        { x: 82, y: -142.5 },
-        { x: 82, y: -142.5 },
-        { x: 82, y: -142.5 },
-        { x: 82.5, y: -142.5 },
-        { x: 82.5, y: -142.5 },
-        { x: 82.5, y: -142.5 },
-        { x: 81.5, y: -142.5 },
-        { x: 81.5, y: -142.5 },
-        { x: 81.5, y: -142.5 },
-        { x: 82, y: -142 },
-        { x: 82, y: -142 },
-        { x: 82, y: -142 },
-        { x: 82.5, y: -142 },
-        { x: 82.5, y: -142 },
-        { x: 82.5, y: -142 },
-        { x: 81.5, y: -142 },
-        { x: 81.5, y: -142 },
-        { x: 81.5, y: -142 },
-        { x: 82, y: -141.5 },
-        { x: 82, y: -141.5 },
-        { x: 82, y: -141.5 },
-        { x: 82.5, y: -141.5 },
-        { x: 82.5, y: -141.5 },
-        { x: 82.5, y: -141.5 },
-        { x: 81.5, y: -141.5 },
-        { x: 81.5, y: -141.5 },
-        { x: 81.5, y: -141.5 },
-        { x: 82, y: -141 },
-        { x: 82, y: -141 },
-        { x: 82, y: -141 },
-      ]
     };
   },
   mounted () {
@@ -87,79 +40,35 @@ export default {
     // ScrollTrigger.refresh();
 
     
-    this.parallaxElement('#hero .photo-container', '.crane', -200, 0,'Back.easeInOut');
-    this.parallaxElement('#hero .photo-container', '.smoke', -200, 0, 'Back.easeInOut');
-    // this.parallaxElement('#hero .photo-container', '.smoke', -650, 45, 'Sine.easeInOut');
-    // this.scaleElement('.smoke', 0.9);
-    // this.parallaxElement('#hero .photo-container', '.pixel', -450, 0,'Back.easeIn');
-    // this.parallaxElement('#hero .photo-container', '.pixel2', -400, 0, 'Sine.easeIn');
-    this.parallaxElement('#hero .content', 'h1', 400, 0, 'Back.easeInOut');
-    this.parallaxElement('#hero .content', 'p', 100, 0, 'Back.easeInOut');
+    // this.parallaxElement('#hero .content', 'h1', 400, 0, 'Back.easeInOut');
+    this.parallaxElement('#hero .content', 'h1', -10, 400, 'none');
+    // this.parallaxElement('#hero .content', 'p', 40, 0, 'power1.in');
+    this.parallaxElement('#hero .photo-container', '.crane', -15, -200,'power3.in');
+    this.parallaxElement('#hero .photo-container', '.smoke', -60, -200, 'power3.in');
     
-    // this.animatePixels();
     // ScrollTrigger.refresh();
 
   },
   methods: { 
-    animatePixels() {
-      const photo = this.$refs.photo;
-      const pixels = this.$el.querySelectorAll('.pixel');
-      const colors = ['#d97979', '#c64949', '#e4c642', '#e48842']; // Ajoutez les couleurs souhaitées
 
-      const timeline = gsap.timeline({ repeat: -1, repeatDelay: 0 });
-
-      gsap.set(pixels, { opacity: 0 });
-
-      const photoRect = photo.getBoundingClientRect();
-      const photoWidth = photoRect.width;
-      const photoHeight = photoRect.height;
-
-      this.pixelCoordinates.forEach((coord, index) => {
-        const pixel = pixels[index];
-        const color = colors[Math.floor(Math.random() * colors.length)]; // Choisissez une couleur aléatoire
-
-        const pixelX = (coord.x / 100) * photoWidth;
-        const pixelY = (coord.y / 100) * photoHeight;
-
-        gsap.set(pixel, { x: pixelX, y: pixelY,  backgroundColor: color });
-
-        timeline.fromTo(
-          pixel,
-          { opacity: 0 },
-          { opacity: 1, duration: 0.2 + Math.random() * 0.5, repeat: 1, yoyo: true, stagger: 0.1 },
-          Math.random()
-        );
-      });
-
-      const handleScroll = () => {
-        const rect = photo.getBoundingClientRect();
-        const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
-
-        if (isVisible && !timeline.isActive()) {
-          timeline.play();
-        } else if (!isVisible && timeline.isActive()) {
-          timeline.pause();
-        }
-      };
-
-      window.addEventListener('scroll', handleScroll);
-      handleScroll();
-    },
     
-    parallaxElement(section, element, yPercent, rotate, ease){
+    parallaxElement(section, element, initialYPercent, finalYPercent, ease){
         let sectionSelector = this.$el.querySelector(section);
         const elementSelector = this.$el.querySelector(element);
+
+        const screenHeight = window.innerHeight;
+        // const initialYPosition = (initialYPercent / 100) * screenHeight;
+
         gsap.set(elementSelector, {
-            rotation: rotate // Définissez l'angle de rotation souhaité (en degrés)
+          yPercent: initialYPercent,
         });
         
         gsap.to(elementSelector, {
-            yPercent: yPercent,
-            rotation: rotate,
+            yPercent: finalYPercent,
             ease: ease,
             scrollTrigger: {
-            trigger: sectionSelector,
-            scrub: true
+              trigger: sectionSelector,
+              scrub: true
             }
         });
     },

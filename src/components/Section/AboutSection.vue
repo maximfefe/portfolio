@@ -9,7 +9,7 @@
       </div>
       <div class="w-100 z-10 absolute">
         <div class="w-full h-full" >
-          <canvas id="canvas_about" class=""></canvas>
+          <!-- <canvas id="canvas_about" class=""></canvas> -->
         </div>
       </div>
       <div class="w-full z-20 absolute left-0 h-screen">

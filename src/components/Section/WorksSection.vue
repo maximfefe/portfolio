@@ -6,7 +6,7 @@
         </div>
         <div class="content w-11/12 m-auto relative z-10">
             <h2 class="ml-auto text-center mt-40 font-title uppercase text-2xl md:text-5xl lg:text-7xl">Projets</h2>
-            <div class="mt-20 grid gap-4 gap-y-20 grid-cols-3 justify-items-center">
+            <div class="mt-20 grid gap-4 gap-y-20 md:grid-cols-3 justify-items-center">
                 <CardWorks onclick="modal_1.showModal()"  :isNew="true" :languages="['Django','Nuxt']" :title="'WILCO Pilote'" image="crane-vangogh.png"/>  
                 <CardWorks2 onclick="modal_2.showModal()"   :isNew="false" :languages="['Laravel']" :title="'Évolution des communes'" image="crane-vangogh.png"/>  
                 <CardWorks :isNew="true" :languages="['Express','Vuejs']" :title="'KitUI'" image="crane-vangogh.png"/>  
@@ -110,6 +110,33 @@ export default {
         },
         openModal(index) {
             this.$refs[`modal_${index}`].showModal();
+        },
+        async fetchNotionData() {
+            const url = 'https://api.notion.com/v1/databases/6814083ccb2d488689b200fe04fb645b/query';
+            const accessToken = import.meta.env.VITE_API_NOTION;
+            console.log(accessToken);
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`,
+                        'Notion-Version': `2022-06-28`,
+                        'Content-Type': 'application/json', // Spécifiez le type de contenu JSON si vous envoyez des données
+                    },
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    this.notionData = data;
+                    console.log(this.notionData);
+
+                } else {
+                    console.error('Erreur lors de la récupération des données Notion');
+                }
+            } catch (error) {
+                console.error('Erreur de réseau', error);
+            }
         },
     }
 

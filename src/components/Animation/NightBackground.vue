@@ -1,5 +1,5 @@
 <template>
-  <div class="content-star">
+  <div class="content-star z-0">
     <div id="star"></div>
   </div>
 </template>

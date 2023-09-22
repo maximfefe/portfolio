@@ -1,5 +1,5 @@
 <template>
-    <div class="w-96 h-52 " @click="flipCard">
+    <div class="w-full lg:w-3/5 lg:mx-10 h-60 " @click="flipCard">
         <div class="flip-card cursor-pointer shadow relative w-full h-full duration-700 transform-3d">
             <div class="card card-side absolute w-full h-full backface-hidden bg-primary">
                 <figure><img class="ms-5 mask mask-hexagon-2 w-32" src="/public/images/crane-vangogh.png" alt="Movie"/></figure>
@@ -9,9 +9,9 @@
                     <span>Originaire du Périgord</span>
                 </div>
             </div>
-            <div class="card absolute w-full h-full backface-hidden rotate-y-180 bg-primary">
+            <div class="card absolute w-full h-full backface-hidden rotate-y-180 bg-secondary text-primary">
                 <div class="card-body text-sm">
-                    <h3 class="font-title uppercase text-lg w-fit ml-auto">Mes diplômes</h3>
+                    <h3 class="font-title uppercase text-lg w-fit">Mes diplômes</h3>
                     <span>Mastère Tech Lead - Bordeaux</span>
                     <span>Licence en informatique - Brive</span>
                     <span>BTS SIO - Limoges</span>

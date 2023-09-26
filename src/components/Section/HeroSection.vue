@@ -20,12 +20,10 @@
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import SmokeAnime from '@/components/SmokeAnime.vue'
 import SmokeCrane from '@/components/Animation/SmokeCrane.vue'
 
 export default {
   components:{
-    SmokeAnime,
     SmokeCrane
   },
   data() {
@@ -36,13 +34,8 @@ export default {
   mounted () {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-    // this.animation = this.animateOnScroll()
-    // ScrollTrigger.refresh();
-
-    
-    // this.parallaxElement('#hero .content', 'h1', 400, 0, 'Back.easeInOut');
     this.parallaxElement('#hero .content', 'h1', -10, 400, 'none');
-    // this.parallaxElement('#hero .content', 'p', 40, 0, 'power1.in');
+    this.parallaxElement('#hero .content', 'p', 40, 0, 'power1.in');
     this.parallaxElement('#hero .photo-container', '.crane', -15, -200,'power3.in');
     this.parallaxElement('#hero .photo-container', '.smoke', -60, -200, 'power3.in');
     
@@ -72,17 +65,6 @@ export default {
             }
         });
     },
-    scaleElement(element, scale){
-        const elementSelector = this.$el.querySelector(element);
-        gsap.to(elementSelector, {
-            scale: scale, // Définissez la mise à l'échelle souhaitée
-            // x: '-=50', // Mouvement vers la droite
-            repeat: -1, // Répéter indéfiniment
-            yoyo: true, // Effectuer une animation en va-et-vient
-            duration: 4,
-            ease: 'Back.easeInOut' // Définissez l'ease souhaité
-        });
-    }
   }
 }
 </script>

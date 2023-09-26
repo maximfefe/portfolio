@@ -7,15 +7,15 @@
           <p class="ml-auto  mt-10 text-2xl">Dans mon travail, je suis soucieux de fournir un code propre et facile à maintenir, tout en respectant les délais et les exigences du projet. Je suis également passionné par le partage de mes connaissances.</p>
         </div>
       </div>
-      <div class="sm:w-100 md:w-7/12 mt-10 relative">
-        <img width="250" height="100" src="images/moi.png"  alt="photo de profil" class="m-auto profil backdrop-blur-sm"/>
-        <div class="absolute inset-x-0 bottom-0 h-16"></div>
-      </div>
+      <atropos-component class=" mx-auto mt-10 card">
+          <div data-atropos-offset="0" class="sm:hover:bg-primary p-10 card">
+            <img  data-atropos-offset="8" width="250" height="100" src="images/moi.png"  alt="photo de profil" class="m-auto profil backdrop-blur-sm"/>
+          </div>
+      </atropos-component>
     </section>
 </template>
 <script>
 import { gsap } from "gsap"
-import { Application } from '@splinetool/runtime';
 
 export default {
   components : {

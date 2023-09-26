@@ -4,7 +4,7 @@
             <img class="relative top-0 w-1/2 left-hand" src="/images/left-hand.png" alt="Main gauche de l'oeuvre Creation of Adam by God, Michelangelo">
             <img class="w-1/2 invisible" src="/images/right-hand.png" alt="Main droite de l'oeuvre Creation of Adam by God, Michelangelo">
         </div>
-        <div class="content w-11/12 m-auto relative z-10">
+        <div class="content w-11/12 m-auto relative z-10 mb-20">
             <h2 class="ml-auto text-center mt-40 font-title uppercase text-2xl md:text-5xl lg:text-7xl">Projets</h2>
             <div class="mt-20 grid gap-4 gap-y-20 md:grid-cols-3 justify-items-center">
                 <CardWorks onclick="modal_1.showModal()"  :isNew="true" :languages="['Django','Nuxt']" :title="'WILCO Pilote'" image="crane-vangogh.png"/>  

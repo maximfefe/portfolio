@@ -1,14 +1,14 @@
 <template>
     <section id="hero" data-bgcolor="#1a1b1c" data-textcolor='#F1F1F1'>
       <div class="w-11/12 m-auto content h-36">
-        <h1 class="relative z-10  font-title uppercase text-2xl text-secondary top-0  md:text-5xl lg:top-3/4 lg:w-2/5 lg:text-7xl">Développeur web</h1>
-        <p class="relative z-10 mt-5 ml-auto text-xl top-80 lg:top-0 lg:w-2/5 lg:text-2xl">Explorez mon univers créatif et technologique à travers mon portfolio, où j'exprime ma passion pour le développement web, le design et l'innovation.</p>
+        <h1 ref="revealText" class="relative z-10  font-title uppercase text-2xl text-secondary top-0  md:text-5xl lg:top-3/4 lg:w-2/5 lg:text-7xl">Développeur <span class="typed"> </span></h1>
+        <p class="reveal relative z-10 mt-5 ml-auto text-xl top-80 lg:top-0 lg:w-2/5 lg:text-2xl">Explorez mon univers créatif et technologique à travers mon portfolio, où j'exprime ma passion pour le développement web, le design et l'innovation.</p>
       </div>
       <div class="photo-container flex gap-48 w-100">
         <!-- <div class="pixel2"></div> -->
-        <img :src="photoSrc" alt="Crâne de squelette fumant une cigarette" height="400" width="900" class="photo crane max-w-full h-fit	" ref="photo" />
+        <img ref="animatedPhoto" :src="photoSrc" alt="Crâne de squelette fumant une cigarette" height="400" width="900" class="photo crane max-w-full h-fit" />
         <!-- <img src="/images/smoke.png" alt="fumer" height="300" width="250" class="smoke " /> -->
-        <SmokeCrane class="smoke"/>
+        <SmokeCrane class="smoke" />
 
         <!-- <div v-for="(pixel, index) in pixelCoordinates" :key="index" class="pixel" :ref="`pixel-${index}`"></div> -->
       </div>
@@ -21,6 +21,8 @@ import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import SmokeCrane from '@/components/Animation/SmokeCrane.vue'
+import ScrollReveal from 'scrollreveal';
+import Typed from 'typed.js';
 
 export default {
   components:{
@@ -32,6 +34,19 @@ export default {
     };
   },
   mounted () {
+
+    const sr = ScrollReveal();
+
+    // Configurez les révélations de défilement
+    sr.reveal('.reveal', {
+      reset: true, 
+      origin: 'bottom', 
+      distance: '100px',
+      delay: 200,
+      // interval: 600,
+      duration: 2000, // Durée de l'animation en millisecondes
+    });
+
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
     this.parallaxElement('#hero .content', 'h1', -10, 400, 'none');
@@ -39,7 +54,35 @@ export default {
     this.parallaxElement('#hero .photo-container', '.crane', -15, -200,'power3.in');
     this.parallaxElement('#hero .photo-container', '.smoke', -60, -200, 'power3.in');
     
-    // ScrollTrigger.refresh();
+    gsap.from(this.$refs.animatedPhoto, {
+      x: -100, 
+      y: 50, 
+      duration: 3, 
+      ease: 'power4.out',
+    });
+    
+    gsap.from(this.$refs.animatedSmoke, {
+      scale: 0.5, 
+      duration: 2, 
+      ease: 'power4.out', 
+    });
+
+    gsap.from(this.$refs.revealText, {
+      x: -900, 
+      duration: 2, 
+      delay:0.5,
+      ease: 'power3.out', 
+    });
+
+     // Utilisation de GSAP pour l'animation
+    var typed = new Typed(".typed", {
+        strings: ["Front", "Back", "Fullstack", "Web"],
+        typeSpeed: 100,
+        startDelay:1000,
+        backSpeed: 50,
+        loop:true
+    }); 
+      
 
   },
   methods: { 

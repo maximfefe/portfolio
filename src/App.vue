@@ -1,7 +1,7 @@
 <template>
   <!-- <LoadingPage/> -->
   <header class="flex justify-center mt-5 mx-5">
-    <div class="w-11/12 m-auto navbar shadow fixed z-50 rounded-box border border-2 border-secondary backdrop-blur-sm text-base-100 p-0">
+    <div ref="animatedMenu" class="w-11/12 m-auto navbar shadow fixed z-50 rounded-box border border-2 border-secondary backdrop-blur-sm text-base-100 p-0">
       <div class="flex-1">
         <RouterLink class="btn btn-ghost font-title uppercase bg-gradient-to-tl from-white via-secondary to-white bg-clip-text text-transparent" to="/">Maxim<br> Fedelique</RouterLink>
       </div>
@@ -26,10 +26,21 @@
   <RouterView />
 </template>
 <script>
+  import gsap from 'gsap';
+
   import LoadingPage from '@/components/LoadingPage.vue'
   export default {
     components:{
       LoadingPage
+    },
+    mounted() {
+      const element = this.$refs.animatedMenu;
+      gsap.from(this.$refs.animatedMenu, {
+        y: -100, 
+        duration: 5, 
+        delay: 1,
+        ease: 'power4.out',
+      });
     },
   };
 </script>

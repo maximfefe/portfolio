@@ -7,16 +7,27 @@
         <div class="content w-11/12 m-auto relative z-10 mb-20">
             <h2 class="ml-auto text-center mt-40 font-title uppercase text-2xl md:text-5xl lg:text-7xl">Projets</h2>
             <div class="mt-20 grid gap-4 gap-y-20 md:grid-cols-3 justify-items-center">
-                <CardWorks class="reveal-left" onclick="modal_1.showModal()"  :isNew="true" :languages="['Django','Nuxt']" :title="'WILCO Pilote'" image="crane-vangogh.png"/>  
-                <CardWorks2 class="reveal-bottom" onclick="modal_2.showModal()"   :isNew="false" :languages="['Laravel']" :title="'Évolution des communes'" image="crane-vangogh.png"/>  
-                <CardWorks class="reveal-right" :isNew="true" :languages="['Express','Vuejs']" :title="'KitUI'" image="crane-vangogh.png"/>  
-                
+                <CardWorks class="reveal-left" onclick="modal_wilco.showModal()"  :isNew="true" :languages="['Django','Nuxt']" :title="'WILCO Pilote'" image="crane-vangogh.png"/>  
+                <CardWorks2 class="reveal-bottom" onclick="modal_commune.showModal()"   :isNew="false" :languages="['Laravel']" :title="'Évolution des communes'" image="commune.png"/>  
+                <CardWorks class="reveal-right" onclick="modal_kitui.showModal()"  :isNew="true" :languages="['Express','Vuejs']" :title="'KitUI'" image="kitui-logo.svg"/>  
+
                 <CardWorks class="reveal-left" :isNew="false" :languages="['Django']" :title="'ID Eaufrance'" image="crane-vangogh.png"/>  
                 <CardWorks2 class="reveal-bottom" :isNew="true" :languages="['Vuejs', 'Flask']" :title="'Parseur Géographique'" image="crane-vangogh.png"/>  
                 <CardWorks class="reveal-right" :isNew="false" :languages="['Laravel']" :title="'Citepa'" image="crane-vangogh.png"/>  
                 
             </div>
-            <ModalWorks
+
+            <ModalWorks modalId="modal_wilco">
+                <WilcoWorks />
+            </ModalWorks>
+            <ModalWorks modalId="modal_commune" >
+                <CommuneWorks />
+            </ModalWorks>
+            <ModalWorks modalId="modal_kitui" >
+                <KitUIWorks />
+            </ModalWorks>
+
+            <!-- <ModalWorks
                 v-for="project in projects"
                 :key="project.index"
                 :modalId="`modal_${project.index}`"
@@ -24,7 +35,7 @@
                 :content="project.content"
                 :canvas3d="project.canvas3d"
                 ref="modal"
-            />
+            /> -->
             <!-- <dialog id="my_modal_1" class="modal">
                 <form method="dialog" class="modal-box">
                     <h3 class="font-bold text-lg">Hello!</h3>
@@ -46,6 +57,9 @@
 <script>
 import { gsap } from 'gsap';
 import ModalWorks from '@/components/Works/ModalWorks.vue';
+import WilcoWorks from '@/components/Works/WilcoWorks.vue';
+import CommuneWorks from '@/components/Works/CommuneWorks.vue';
+import KitUIWorks from '@/components/Works/KitUIWorks.vue';
 import CardWorks from '@/components/Works/CardWorks.vue';
 import CardWorks2 from '@/components/Works/CardWorks2.vue';
 import { parallaxGsap } from "@/utils/ParallaxGsap.js";
@@ -55,7 +69,10 @@ export default {
     components:{
         CardWorks,
         CardWorks2,
-        ModalWorks
+        ModalWorks,
+        WilcoWorks,
+        CommuneWorks,
+        KitUIWorks,
     },
     data() {
         return {

@@ -7,13 +7,13 @@
         <div class="content w-11/12 m-auto relative z-10 mb-20">
             <h2 class="ml-auto text-center mt-40 font-title uppercase text-2xl md:text-5xl lg:text-7xl">Projets</h2>
             <div class="mt-20 grid gap-4 gap-y-20 md:grid-cols-3 justify-items-center">
-                <CardWorks onclick="modal_1.showModal()"  :isNew="true" :languages="['Django','Nuxt']" :title="'WILCO Pilote'" image="crane-vangogh.png"/>  
-                <CardWorks2 onclick="modal_2.showModal()"   :isNew="false" :languages="['Laravel']" :title="'Évolution des communes'" image="crane-vangogh.png"/>  
-                <CardWorks :isNew="true" :languages="['Express','Vuejs']" :title="'KitUI'" image="crane-vangogh.png"/>  
+                <CardWorks class="reveal-left" onclick="modal_1.showModal()"  :isNew="true" :languages="['Django','Nuxt']" :title="'WILCO Pilote'" image="crane-vangogh.png"/>  
+                <CardWorks2 class="reveal-bottom" onclick="modal_2.showModal()"   :isNew="false" :languages="['Laravel']" :title="'Évolution des communes'" image="crane-vangogh.png"/>  
+                <CardWorks class="reveal-right" :isNew="true" :languages="['Express','Vuejs']" :title="'KitUI'" image="crane-vangogh.png"/>  
                 
-                <CardWorks :isNew="false" :languages="['Django']" :title="'ID Eaufrance'" image="crane-vangogh.png"/>  
-                <CardWorks2 :isNew="true" :languages="['Vuejs', 'Flask']" :title="'Parseur Géographique'" image="crane-vangogh.png"/>  
-                <CardWorks :isNew="false" :languages="['Laravel']" :title="'Citepa'" image="crane-vangogh.png"/>  
+                <CardWorks class="reveal-left" :isNew="false" :languages="['Django']" :title="'ID Eaufrance'" image="crane-vangogh.png"/>  
+                <CardWorks2 class="reveal-bottom" :isNew="true" :languages="['Vuejs', 'Flask']" :title="'Parseur Géographique'" image="crane-vangogh.png"/>  
+                <CardWorks class="reveal-right" :isNew="false" :languages="['Laravel']" :title="'Citepa'" image="crane-vangogh.png"/>  
                 
             </div>
             <ModalWorks
@@ -48,6 +48,8 @@ import { gsap } from 'gsap';
 import ModalWorks from '@/components/Works/ModalWorks.vue';
 import CardWorks from '@/components/Works/CardWorks.vue';
 import CardWorks2 from '@/components/Works/CardWorks2.vue';
+import { parallaxGsap } from "@/utils/ParallaxGsap.js";
+import ScrollReveal from 'scrollreveal';
 
 export default {
     components:{
@@ -87,27 +89,36 @@ export default {
         };
     },
     mounted() {
-        this.parallaxElement('#works', '#works .left-hand', 300, 0, 'power1.in');
-        this.parallaxElement('#works', '#works .right-hand', -400, 0, 'power1.in');
+        
+        const sr = ScrollReveal();
+
+        sr.reveal('.reveal-left', {
+            reset: true, 
+            origin: 'left', 
+            distance: '100px',
+            interval: 200,
+            duration: 2000,
+        });
+        sr.reveal('.reveal-bottom', {
+            reset: true, 
+            origin: 'bottom', 
+            distance: '100px',
+            interval: 500,
+            delay: 250,
+            duration: 2000,
+        });
+        sr.reveal('.reveal-right', {
+            reset: true, 
+            origin: 'right', 
+            distance: '100px',
+            delay: 500,
+            interval: 500,
+            duration: 2000,
+        });
+        parallaxGsap('#works', '#works .left-hand', 0, 200, 'power1.in');
+        parallaxGsap('#works', '#works .right-hand', -50, -300, 'power1.in');
     },
     methods: {
-        parallaxElement(section, element, yPercent, rotate, ease){
-            let sectionSelector = this.$el.querySelector(section);
-            const elementSelector = this.$el.querySelector(element);
-            gsap.set(elementSelector, {
-                rotation: rotate // Définissez l'angle de rotation souhaité (en degrés)
-            });
-            
-            gsap.to(elementSelector, {
-                yPercent: yPercent,
-                rotation: rotate,
-                ease: ease,
-                scrollTrigger: {
-                trigger: sectionSelector,
-                scrub: true
-                }
-            });
-        },
         openModal(index) {
             this.$refs[`modal_${index}`].showModal();
         },

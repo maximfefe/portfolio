@@ -11,6 +11,8 @@
 
 <script>
 import { gsap } from 'gsap';
+import { parallaxGsap } from "@/utils/ParallaxGsap.js";
+
 export default {
     data() {
         return {
@@ -20,10 +22,8 @@ export default {
     },
     mounted() {
         this.scrollAnimation();
-        // this.parallaxElement('#tech', '#tech h2', 1000, 0, 'power1.in');
-        // this.parallaxElement('#tech .content', '.side-scroll', 600, 0, 'power1.in');
-        this.parallaxElement('#tech', '#tech h2', 200, 0, 'power1.in');
-        this.parallaxElement('#tech .content', '.side-scroll', 300, 0, 'power1.in');
+        parallaxGsap('#tech', '#tech h2', 400, -1000, 'power1.in');
+        parallaxGsap('#tech .content', '.side-scroll', -150, 50, 'power1.out');
 
     },
     methods: {
@@ -38,22 +38,6 @@ export default {
                 ease: 'linear',
                 duration: totalWidth / 200,
                 repeat: -1,
-            });
-        },
-        parallaxElement(section, element, yPercent, ease){
-            let sectionSelector = this.$el.querySelector(section);
-            const elementSelector = this.$el.querySelector(element);
-            gsap.set(elementSelector, {
-                yPercent: 0,
-            });
-            
-            gsap.to(elementSelector, {
-                yPercent: yPercent,
-                ease: ease,
-                scrollTrigger: {
-                trigger: sectionSelector,
-                scrub: true
-                }
             });
         },
     }

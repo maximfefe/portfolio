@@ -6,9 +6,9 @@
                 <NightBackground/>
             </div>
 
-            <div class="w-full lg:w-1/2">
+            <div class="w-full lg:w-1/2 mt-40">
                 <h2 class="font-title uppercase text-2xl sm:mt-60 md:mt-0 md:text-5xl lg:text-7xl">Contact</h2>
-                <div class="content ml-auto w-full text-2xl">
+                <div class="reveal-contact content ml-auto w-full text-2xl">
                     <i></i>
                     <i></i>
                     <i></i>
@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="w-full lg:w-1/2 m-auto card-flip-gsap z-10">
-                <CardFlip/>
+                <CardFlip />
             </div>
         </div>
         <!-- <WaveBackground2/> -->
@@ -29,6 +29,8 @@
 import NightBackground from '@/components/Animation/NightBackground.vue'
 import CardFlip from '@/components/Contact/CardFlip.vue'
 import { gsap } from 'gsap';
+import { parallaxGsap } from "@/utils/ParallaxGsap.js";
+import ScrollReveal from 'scrollreveal';
 
 export default {
     components:{
@@ -36,28 +38,20 @@ export default {
         CardFlip
     },
     mounted() {
-        this.parallaxElement('#contact', '#contact h2', 300, 0, 'power1.in');
-        this.parallaxElement('#contact', '#contact .content', 250, 0, 'power2.in');
-        this.parallaxElement('#contact', '#contact .card-flip-gsap', 200, 0, 'power1.in');
+        const sr = ScrollReveal();
+       
+        sr.reveal('.reveal-contact', {
+            reset: true, 
+            origin: 'bottom', 
+            distance: '100px',
+            interval: 0,
+            duration: 2000,
+        });
+        parallaxGsap('#contact', '#contact h2', 0, 200, 'power1.in');
+        parallaxGsap('#contact', '#contact .content', 150, -250, 'power2.in');
+        parallaxGsap('#contact', '#contact .card-flip-gsap', 0, 400, 'power1.in');
     },
     methods:{
-        parallaxElement(section, element, yPercent, rotate, ease){
-            let sectionSelector = this.$el.querySelector(section);
-            const elementSelector = this.$el.querySelector(element);
-            gsap.set(elementSelector, {
-                rotation: rotate // Définissez l'angle de rotation souhaité (en degrés)
-            });
-            
-            gsap.to(elementSelector, {
-                yPercent: yPercent,
-                rotation: rotate,
-                ease: ease,
-                scrollTrigger: {
-                trigger: sectionSelector,
-                scrub: true
-                }
-            });
-        },
     }
     
 }

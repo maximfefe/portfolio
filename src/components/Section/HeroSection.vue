@@ -1,7 +1,7 @@
 <template>
     <section id="hero" data-bgcolor="#1a1b1c" data-textcolor='#F1F1F1'>
       <div class="w-11/12 m-auto content h-36">
-        <h1 ref="revealText" class="relative z-10  font-title uppercase text-2xl text-secondary top-0  md:text-5xl lg:top-3/4 lg:w-2/5 lg:text-7xl">Développeur <span class="typed"> </span></h1>
+        <h1 ref="revealText" class="relative z-10  font-title uppercase text-2xl text-secondary bottom-0  md:text-5xl lg:top-3/4 lg:w-2/5 lg:text-7xl">Développeur <span class="typed"> </span></h1>
         <p class="reveal relative z-10 mt-5 ml-auto text-xl top-80 lg:top-0 lg:w-2/5 lg:text-2xl">Explorez mon univers créatif et technologique à travers mon portfolio, où j'exprime ma passion pour le développement web, le design et l'innovation.</p>
       </div>
       <div class="photo-container flex gap-48 w-100">
@@ -23,6 +23,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import SmokeCrane from '@/components/Animation/SmokeCrane.vue'
 import ScrollReveal from 'scrollreveal';
 import Typed from 'typed.js';
+import { parallaxGsap } from "@/utils/ParallaxGsap.js";
 
 export default {
   components:{
@@ -37,22 +38,21 @@ export default {
 
     const sr = ScrollReveal();
 
-    // Configurez les révélations de défilement
     sr.reveal('.reveal', {
       reset: true, 
       origin: 'bottom', 
       distance: '100px',
       delay: 200,
       // interval: 600,
-      duration: 2000, // Durée de l'animation en millisecondes
+      duration: 2000,
     });
 
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-    this.parallaxElement('#hero .content', 'h1', -10, 400, 'none');
-    this.parallaxElement('#hero .content', 'p', 40, 0, 'power1.in');
-    this.parallaxElement('#hero .photo-container', '.crane', -15, -200,'power3.in');
-    this.parallaxElement('#hero .photo-container', '.smoke', -60, -200, 'power3.in');
+    parallaxGsap('#hero .content', 'h1', -100, 400, 'none');
+    parallaxGsap('#hero .content', 'p', 40, 0, 'power1.in');
+    parallaxGsap('#hero .photo-container', '.crane', -15, -200,'power3.in');
+    parallaxGsap('#hero .photo-container', '.smoke', -60, -200, 'power3.in');
     
     gsap.from(this.$refs.animatedPhoto, {
       x: -100, 
@@ -86,28 +86,6 @@ export default {
 
   },
   methods: { 
-
-    
-    parallaxElement(section, element, initialYPercent, finalYPercent, ease){
-        let sectionSelector = this.$el.querySelector(section);
-        const elementSelector = this.$el.querySelector(element);
-
-        const screenHeight = window.innerHeight;
-        // const initialYPosition = (initialYPercent / 100) * screenHeight;
-
-        gsap.set(elementSelector, {
-          yPercent: initialYPercent,
-        });
-        
-        gsap.to(elementSelector, {
-            yPercent: finalYPercent,
-            ease: ease,
-            scrollTrigger: {
-              trigger: sectionSelector,
-              scrub: true
-            }
-        });
-    },
   }
 }
 </script>

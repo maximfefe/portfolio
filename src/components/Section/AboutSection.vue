@@ -7,9 +7,9 @@
           <p class="reveal ml-auto  mt-10 text-2xl">Dans mon travail, je suis soucieux de fournir un code propre et facile à maintenir, tout en respectant les délais et les exigences du projet. Je suis également passionné par le partage de mes connaissances.</p>
         </div>
       </div>
-      <atropos-component class="reveal mx-auto mt-10 card">
+      <atropos-component class="reveal mx-auto mt-10 card profil">
           <div data-atropos-offset="0" class="sm:hover:bg-primary p-10 card">
-            <img  data-atropos-offset="8" width="250" height="100" src="images/moi.png"  alt="photo de profil" class="m-auto profil backdrop-blur-sm"/>
+            <img  data-atropos-offset="8" width="250" height="100" src="images/moi.png"  alt="photo de profil" class="m-auto backdrop-blur-sm"/>
           </div>
       </atropos-component>
     </section>

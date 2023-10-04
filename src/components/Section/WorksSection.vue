@@ -35,25 +35,6 @@
             <ModalWorks modalId="modal_citepa" >
                 <CitepaWorks />
             </ModalWorks>
-
-            <!-- <ModalWorks
-                v-for="project in projects"
-                :key="project.index"
-                :modalId="`modal_${project.index}`"
-                :title="project.title"
-                :content="project.content"
-                :canvas3d="project.canvas3d"
-                ref="modal"
-            /> -->
-            <!-- <dialog id="my_modal_1" class="modal">
-                <form method="dialog" class="modal-box">
-                    <h3 class="font-bold text-lg">Hello!</h3>
-                    <p class="py-4">Press ESC key or click the button below to close</p>
-                    <div class="modal-action">
-                    <button class="btn">Close</button>
-                    </div>
-                </form>
-            </dialog> -->
         </div>
 
         <div class="absolute flex z-0">
@@ -91,64 +72,43 @@ export default {
     },
     data() {
         return {
-        projects: [
-            // {
-            //     index: 1,
-            //     title: 'WILCO Pilote',
-            //     content: `
-            //         <p>Ce projet est projet réalisé</p>
-            //         <div class="w-64" style="height: 30rem;">
-            //             <canvas id="canvas3d_modal_1" class=""></canvas>
-            //         </div>
-            //         <a href="https://wilcopilot.fr">Lien du site</a>
-            //     `,
-
-            //     canvas3d :"https://prod.spline.design/UqIN7g4yFUdzgKV0/scene.splinecode"
-            // },
-            // {
-            //     index: 2,
-            //     title: 'WILCO Pilote',
-            //     content: `
-            //     <p>This is the content for WILCO Pilote.</p>
-            //     <p>You can add any text, links, images, and formatting here.</p>
-            //     <img src="/images/left-hand.png"" alt="Image">
-                
-            //     <a href="https://example.com">Link to Example</a>
-            //     `,
-            // },
-            // Add more objects for other cards with unique content
-        ],
         };
     },
     mounted() {
-        
-        const sr = ScrollReveal();
+        if(screen.width > 768){
+            const sr = ScrollReveal();
+    
+            sr.reveal('.reveal-left', {
+                reset: true, 
+                origin: 'left', 
+                distance: '100px',
+                interval: 200,
+                duration: 2000,
+            });
+            sr.reveal('.reveal-bottom', {
+                reset: true, 
+                origin: 'bottom', 
+                distance: '100px',
+                interval: 500,
+                delay: 250,
+                duration: 2000,
+            });
+            sr.reveal('.reveal-right', {
+                reset: true, 
+                origin: 'right', 
+                distance: '100px',
+                delay: 500,
+                interval: 500,
+                duration: 2000,
+            });
+            parallaxGsap('#works', '#works .left-hand', 0, 200, 'power1.in');
+            parallaxGsap('#works', '#works .right-hand', -50, -300, 'power1.in');
+        }else{
+            parallaxGsap('#works', '#works .left-hand', 600, 2000, 'power1.in');
+            parallaxGsap('#works', '#works .right-hand', -500, -2000, 'power1.in');
 
-        sr.reveal('.reveal-left', {
-            reset: true, 
-            origin: 'left', 
-            distance: '100px',
-            interval: 200,
-            duration: 2000,
-        });
-        sr.reveal('.reveal-bottom', {
-            reset: true, 
-            origin: 'bottom', 
-            distance: '100px',
-            interval: 500,
-            delay: 250,
-            duration: 2000,
-        });
-        sr.reveal('.reveal-right', {
-            reset: true, 
-            origin: 'right', 
-            distance: '100px',
-            delay: 500,
-            interval: 500,
-            duration: 2000,
-        });
-        parallaxGsap('#works', '#works .left-hand', 0, 200, 'power1.in');
-        parallaxGsap('#works', '#works .right-hand', -50, -300, 'power1.in');
+        }
+        
     },
     methods: {
         openModal(index) {

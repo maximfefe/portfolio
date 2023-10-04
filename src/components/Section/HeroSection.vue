@@ -1,7 +1,7 @@
 <template>
     <section id="hero" data-bgcolor="#1a1b1c" data-textcolor='#F1F1F1'>
       <div class="w-11/12 m-auto content h-36">
-        <h1 ref="revealText" class="relative z-10  font-title uppercase text-2xl text-secondary bottom-0  md:text-5xl lg:top-3/4 lg:w-2/5 lg:text-7xl">Développeur <span class="typed"> </span></h1>
+        <h1 ref="revealText" class="relative z-10 mt-20 font-title uppercase text-2xl text-secondary bottom-0  md:text-5xl lg:top-3/4 lg:w-2/5 lg:text-7xl w-min">Développeur <span class="typed"> </span></h1>
         <p class="reveal relative z-10 mt-5 ml-auto text-xl top-80 lg:top-0 lg:w-2/5 lg:text-2xl">Explorez mon univers créatif et technologique à travers mon portfolio, où j'exprime ma passion pour le développement web, le design et l'innovation.</p>
       </div>
       <div class="photo-container flex gap-48 w-100">
@@ -35,53 +35,56 @@ export default {
     };
   },
   mounted () {
-
-    const sr = ScrollReveal();
-
-    sr.reveal('.reveal', {
-      reset: true, 
-      origin: 'bottom', 
-      distance: '100px',
-      delay: 200,
-      // interval: 600,
-      duration: 2000,
-    });
-
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-
-    parallaxGsap('#hero .content', 'h1', -100, 400, 'none');
-    parallaxGsap('#hero .content', 'p', 40, 0, 'power1.in');
     parallaxGsap('#hero .photo-container', '.crane', -15, -200,'power3.in');
     parallaxGsap('#hero .photo-container', '.smoke', -60, -200, 'power3.in');
-    
-    gsap.from(this.$refs.animatedPhoto, {
-      x: -100, 
-      y: 50, 
-      duration: 3, 
-      ease: 'power4.out',
-    });
-    
-    gsap.from(this.$refs.animatedSmoke, {
-      scale: 0.5, 
-      duration: 2, 
-      ease: 'power4.out', 
-    });
+    if(screen.width > 768){
+      
+      const sr = ScrollReveal();
+      
+      sr.reveal('.reveal', {
+        reset: true, 
+        origin: 'bottom', 
+        distance: '100px',
+        delay: 200,
+        // interval: 600,
+        duration: 2000,
+      });
+      
+      
+      parallaxGsap('#hero .content', 'h1', -100, 400, 'none');
+      parallaxGsap('#hero .content', 'p', 40, 0, 'power1.in');
+      
+      gsap.from(this.$refs.animatedPhoto, {
+        x: -100, 
+        y: 50, 
+        duration: 3, 
+        ease: 'power4.out',
+      });
+      
+      gsap.from(this.$refs.animatedSmoke, {
+        scale: 0.5, 
+        duration: 2, 
+        ease: 'power4.out', 
+      });
+  
+      gsap.from(this.$refs.revealText, {
+        x: -900, 
+        duration: 2, 
+        delay:0.5,
+        ease: 'power3.out', 
+      });
+  
+      }
 
-    gsap.from(this.$refs.revealText, {
-      x: -900, 
-      duration: 2, 
-      delay:0.5,
-      ease: 'power3.out', 
-    });
+      var typed = new Typed(".typed", {
+          strings: ["Front", "Back", "Fullstack", "Web"],
+          typeSpeed: 100,
+          startDelay:1000,
+          backSpeed: 50,
+          loop:true
+      }); 
 
-     // Utilisation de GSAP pour l'animation
-    var typed = new Typed(".typed", {
-        strings: ["Front", "Back", "Fullstack", "Web"],
-        typeSpeed: 100,
-        startDelay:1000,
-        backSpeed: 50,
-        loop:true
-    }); 
       
 
   },

@@ -7,8 +7,8 @@
           <p class="reveal ml-auto  mt-10 text-2xl">Dans mon travail, je suis soucieux de fournir un code propre et facile à maintenir, tout en respectant les délais et les exigences du projet. Je suis également passionné par le partage de mes connaissances.</p>
         </div>
       </div>
-      <atropos-component class="reveal mx-auto mt-10 card profil">
-          <div data-atropos-offset="0" class="sm:hover:bg-primary p-10 card">
+      <atropos-component class="mx-auto mt-10 card profil w-fit">
+          <div data-atropos-offset="0" class="hover:bg-primary p-10 card">
             <img  data-atropos-offset="8" width="250" height="100" src="/images/moi.png"  alt="photo de profil" class="m-auto backdrop-blur-sm"/>
           </div>
       </atropos-component>
@@ -25,27 +25,22 @@ export default {
   },
   mounted () {
     
-    
-    const sr = ScrollReveal();
+    if(screen.width > 768){
+      const sr = ScrollReveal();
+  
+      sr.reveal('.reveal', {
+        reset: true, 
+        origin: 'bottom', 
+        distance: '100px',
+        interval: 100,
+        duration: 2000,
+      });
 
-    sr.reveal('.reveal', {
-      reset: true, 
-      origin: 'bottom', 
-      distance: '100px',
-      interval: 100,
-      duration: 2000,
-    });
-    
-    // sr.reveal('.reveal-left', {
-    //   reset: true, 
-    //   origin: 'left', 
-    //   distance: '300px',
-    //   interval: 200,
-    //   duration: 2000,
-    // });
-    parallaxGsap('#about', '.profil', 20, -450, 'power3.in');
-    parallaxGsap('#about .content', 'h2', 0, -200, 'power3.in');
-    parallaxGsap('#about .content', '.description', 20, -100, 'power1.in');
+      parallaxGsap('#about', '.profil', 20, -450, 'power3.in');
+      parallaxGsap('#about .content', 'h2', 0, -200, 'power3.in');
+      parallaxGsap('#about .content', '.description', 20, -100, 'power1.in');
+
+    }
 
   },
   methods: {

@@ -22,8 +22,10 @@ export default {
     },
     mounted() {
         this.scrollAnimation();
-        parallaxGsap('#tech', '#tech h2', 400, -1000, 'power1.in');
-        parallaxGsap('#tech .content', '.side-scroll', -150, 50, 'power1.out');
+        if(screen.width > 768){
+            parallaxGsap('#tech', '#tech h2', 400, -1000, 'power1.in');
+            parallaxGsap('#tech .content', '.side-scroll', -150, 50, 'power1.out');
+        }
 
     },
     methods: {

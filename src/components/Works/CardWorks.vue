@@ -3,7 +3,8 @@
         <div data-atropos-offset="0" class="card cursor-pointer hover:bg-secondary w-64 items-center p-2">
             <figure data-atropos-offset="2" class="indicator">
                 <span v-if="isNew" class="indicator-item indicator-bottom indicator-center badge badge-accent top-0">new</span>
-                <img data-atropos-offset="3" class="mask mask-hexagon h-60 " :src="'/public/images/'+image" height="100" alt="error image"/>
+                <!-- <div data-atropos-offset="3" class="mask mask-hexagon h-60 w-60 bg-centered bg-no-repeat bg-center"  :style="`background-image: url(/images/${image})`" ></div> -->
+                <img data-atropos-offset="3" class="mask mask-hexagon h-60"  :src="'/images/'+image" alt="error image"/>
             </figure>
             <div data-atropos-offset="4" class="card-body p-0">
                 <h3 data-atropos-offset="6"  class="card-title justify-center">

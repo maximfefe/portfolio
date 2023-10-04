@@ -13,7 +13,7 @@
             </div>
             <figure data-atropos-offset="7" class="indicator">
                 <span v-if="isNew" class="indicator-item indicator-bottom indicator-center badge badge-accent bottom-6">new</span>
-                <img data-atropos-offset="3" class="mask mask-hexagon h-60" :src="'/public/images/'+image" height="100"/>
+                <img data-atropos-offset="3" class="mask mask-hexagon h-60" :src="'/images/'+image" height="100"/>
             </figure>
         </div>
     </atropos-component>

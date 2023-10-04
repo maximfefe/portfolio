@@ -7,13 +7,13 @@
         <div class="content w-11/12 m-auto relative z-10 mb-20">
             <h2 class="ml-auto text-center mt-40 font-title uppercase text-2xl md:text-5xl lg:text-7xl">Projets</h2>
             <div class="mt-20 grid gap-4 gap-y-20 md:grid-cols-3 justify-items-center">
-                <CardWorks class="reveal-left" onclick="modal_wilco.showModal()"  :isNew="true" :languages="['Django','Nuxt']" :title="'WILCO Pilote'" image="crane-vangogh.png"/>  
+                <CardWorks class="reveal-left" onclick="modal_wilco.showModal()"  :isNew="true" :languages="['Django','Nuxt']" :title="'WILCO Pilote'" image="wilco-logo.png"/>  
                 <CardWorks2 class="reveal-bottom" onclick="modal_commune.showModal()"   :isNew="false" :languages="['Laravel']" :title="'Évolution des communes'" image="commune.png"/>  
-                <CardWorks class="reveal-right" onclick="modal_kitui.showModal()"  :isNew="true" :languages="['Express','Vuejs']" :title="'KitUI'" image="kitui-logo.svg"/>  
+                <CardWorks class="reveal-right" onclick="modal_kitui.showModal()"  :isNew="true" :languages="['Express','Vuejs']" :title="'KitUI'" image="kitui-logo.png"/>  
 
-                <CardWorks class="reveal-left" :isNew="false" :languages="['Django']" :title="'ID Eaufrance'" image="crane-vangogh.png"/>  
-                <CardWorks2 class="reveal-bottom" :isNew="true" :languages="['Vuejs', 'Flask']" :title="'Parseur Géographique'" image="crane-vangogh.png"/>  
-                <CardWorks class="reveal-right" :isNew="false" :languages="['Laravel']" :title="'Citepa'" image="crane-vangogh.png"/>  
+                <CardWorks class="reveal-left" onclick="modal_ideaufrance.showModal()" :isNew="false" :languages="['Django']" :title="'ID Eaufrance'" image="ideaufrance-logo.png"/>  
+                <CardWorks2 class="reveal-bottom" onclick="modal_parseur.showModal()" :isNew="true" :languages="['Vuejs', 'Flask']" :title="'Parseur Géographique'" image="sandre-logo.png"/>  
+                <CardWorks class="reveal-right" onclick="modal_citepa.showModal()" :isNew="false" :languages="['Laravel']" :title="'Citepa'" image="citepa-logo.png"/>  
                 
             </div>
 
@@ -25,6 +25,15 @@
             </ModalWorks>
             <ModalWorks modalId="modal_kitui" >
                 <KitUIWorks />
+            </ModalWorks>
+            <ModalWorks modalId="modal_ideaufrance" >
+                <IdeaufranceWorks />
+            </ModalWorks>
+            <ModalWorks modalId="modal_parseur" >
+                <ParseurWorks />
+            </ModalWorks>
+            <ModalWorks modalId="modal_citepa" >
+                <CitepaWorks />
             </ModalWorks>
 
             <!-- <ModalWorks
@@ -60,6 +69,9 @@ import ModalWorks from '@/components/Works/ModalWorks.vue';
 import WilcoWorks from '@/components/Works/WilcoWorks.vue';
 import CommuneWorks from '@/components/Works/CommuneWorks.vue';
 import KitUIWorks from '@/components/Works/KitUIWorks.vue';
+import IdeaufranceWorks from '@/components/Works/IdeaufranceWorks.vue';
+import ParseurWorks from '@/components/Works/ParseurWorks.vue';
+import CitepaWorks from '@/components/Works/CitepaWorks.vue';
 import CardWorks from '@/components/Works/CardWorks.vue';
 import CardWorks2 from '@/components/Works/CardWorks2.vue';
 import { parallaxGsap } from "@/utils/ParallaxGsap.js";
@@ -73,6 +85,9 @@ export default {
         WilcoWorks,
         CommuneWorks,
         KitUIWorks,
+        IdeaufranceWorks,
+        ParseurWorks,
+        CitepaWorks
     },
     data() {
         return {

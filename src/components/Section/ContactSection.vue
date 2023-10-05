@@ -40,7 +40,7 @@ export default {
     mounted() {
         if(screen.width > 768){
             parallaxGsap('#contact', '#contact h2', 150, 200, 'power1.in');
-            parallaxGsap('#contact', '#contact .content', 0, 800, 'power3.in');
+            parallaxGsap('#contact', '#contact .content', 0, 700, 'power3.in');
             // parallaxGsap('#contact', '#contact .card-flip-gsap', 0, 400, 'power1.in');
         }
     },
